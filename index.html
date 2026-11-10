@@ -330,7 +330,40 @@ html:not(.js) .hint,html:not(.js) #chips,html:not(.js) .jo{display:none}
 .sf .x{text-decoration:none;line-height:1}
 html.js .sf{display:none!important}
 .hero p{width:auto;max-width:min(38ch,100%)}
-@media(max-width:600px){.hero{padding-bottom:88px}.s1{top:6%;left:52%}.s3{top:13%;left:20%}.s2{top:20%;left:6%}.pol{top:18%;left:60%}.s4{top:28%;left:4%}.s5{top:36%;left:18%}}
+/* hero: tidy, aligned sticker layout */
+.hero{padding-left:6vw;padding-right:6vw}
+.htop{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;margin:0 0 auto;padding-top:56px;position:relative;z-index:2}
+.stk{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.htop .sticker{position:relative;top:auto;left:auto;right:auto;border-radius:16px;padding:14px 18px;font-size:clamp(20px,2.2vw,28px);min-width:150px}
+.htop .s1{background:var(--lime);transform:rotate(-3deg)}
+.htop .s2{background:var(--white);transform:rotate(2deg)}
+.htop .s4{background:var(--pink);color:var(--white);transform:rotate(-2deg)}
+.htop .pol{flex:0 0 auto;width:clamp(150px,17vw,220px);padding:9px 9px 7px;border-radius:6px;transform:rotate(4deg);min-width:0}
+.hero h1{margin-top:28px}
+@media(max-width:600px){
+ .hero{min-height:auto;padding-top:calc(env(safe-area-inset-top,0px) + 22px);padding-bottom:92px}
+ .hint{display:none}
+ .htop{padding-top:0;gap:16px;align-items:stretch}
+ .stk{flex-direction:column;flex-wrap:nowrap;gap:10px;flex:1;min-width:0}
+ .htop .sticker{font-size:20px;padding:11px 12px;min-width:0;text-align:left}
+ .htop .sticker small{font-size:12.5px}
+ .htop .s1{transform:rotate(-2deg)}.htop .s2{transform:rotate(1.5deg)}.htop .s4{transform:rotate(-1.5deg)}
+ .htop .pol{width:44%;max-width:170px;align-self:flex-start;transform:rotate(3deg);text-align:center}
+ .htop .pol small{font-size:12px}
+ .hero h1{margin-top:30px}
+ .hero p{transform:none;font-size:17px}
+ .htop .sticker{touch-action:auto;cursor:default}
+ .hcta{gap:10px}.hcta .cta{font-size:17px;padding:10px 16px;box-shadow:4px 4px 0 var(--ink)}
+}
+@media(min-width:601px){
+ .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"stk pol" "h1 pol" "p pol" "cta pol";align-content:center;column-gap:5vw;padding-top:96px;padding-bottom:72px}
+ .htop{display:contents}
+ .stk{grid-area:stk;justify-self:start}
+ .htop .pol{grid-area:pol;align-self:center;width:clamp(180px,20vw,280px)}
+ .hero h1{grid-area:h1;font-size:clamp(76px,14.5vw,210px)}
+ .hero p{grid-area:p;justify-self:start}
+ .hcta{grid-area:cta}
+}
 
 .scr.shot{aspect-ratio:auto;background:#f3f1ea}
 .scr.shot img{display:block;width:100%;height:auto;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
@@ -353,12 +386,14 @@ html.js .sf{display:none!important}
 
 <header class="hero" id="top">
   <div class="hint">drag the stickers around</div>
-  <div class="sticker s1">10 yrs<small>incl. Amazon India</small></div>
-  <div class="sticker s2">5 live sites<small>4 industries</small></div>
-  <div class="sticker s3">design · build · launch</div>
-  <div class="sticker s4">Founder<small>taking new projects</small></div>
-  <div class="sticker s5">Secure<small>fast &amp; mobile-first</small></div>
-  <div class="sticker pol"><span class="face ph"></span><small>hi, I’m Manjeet</small></div>
+  <div class="htop">
+    <div class="stk">
+      <div class="sticker s1">10 yrs<small>incl. Amazon India</small></div>
+      <div class="sticker s2">5 live sites<small>4 industries</small></div>
+      <div class="sticker s4">Founder<small>taking new projects</small></div>
+    </div>
+    <div class="sticker pol"><span class="face ph"></span><small>hi, I’m Manjeet</small></div>
+  </div>
   <h1>Manjeet<br>Singh</h1>
   <p>Founder. 10 years with Amazon India and global companies taught me how a business should present itself. Now I build websites, decks and infographics for growing businesses.</p>
   <div class="hcta"><a class="cta" href="#work">See my work</a><a class="cta alt" href="https://wa.me/918830288180" target="_blank" rel="noopener">WhatsApp me</a></div>
@@ -616,11 +651,10 @@ document.addEventListener('keydown',function(e){if(!st.classList.contains('show'
 
 /* draggable stickers */
 [].forEach.call(document.querySelectorAll('.sticker'),function(s){
- var ox,oy;
- s.addEventListener('pointerdown',function(e){var r=s.getBoundingClientRect();ox=e.clientX-r.left;oy=e.clientY-r.top;s.setPointerCapture(e.pointerId);s.classList.add('drag')});
- s.addEventListener('pointermove',function(e){if(!s.classList.contains('drag'))return;var p=s.offsetParent.getBoundingClientRect();
-  var x=Math.max(0,Math.min(p.width-s.offsetWidth,e.clientX-p.left-ox)),y=Math.max(0,Math.min(p.height-s.offsetHeight,e.clientY-p.top-oy));
-  s.style.left=x+'px';s.style.top=y+'px'});
+ var sx,sy,sl,st;
+ s.addEventListener('pointerdown',function(e){if(e.pointerType==='touch')return;sx=e.clientX;sy=e.clientY;sl=parseFloat(s.style.left)||0;st=parseFloat(s.style.top)||0;s.setPointerCapture(e.pointerId);s.classList.add('drag')});
+ s.addEventListener('pointermove',function(e){if(!s.classList.contains('drag'))return;
+  s.style.left=(sl+e.clientX-sx)+'px';s.style.top=(st+e.clientY-sy)+'px'});
  s.addEventListener('pointerup',function(){s.classList.remove('drag')});
  s.addEventListener('pointercancel',function(){s.classList.remove('drag')})});
 
