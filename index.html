@@ -297,7 +297,6 @@ footer.foot{background:var(--ink);color:var(--white);border-radius:28px 28px 0 0
 #vibew{position:fixed;right:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:40}
 .vb{display:none;font:400 18px 'Fraunces',Georgia,serif;background:var(--lime);color:var(--ink);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);border-radius:99px;padding:10px 18px;cursor:pointer;-webkit-user-select:none;user-select:none}
 .vb:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
-#v0:checked~.page .vb[for=v1],#v1:checked~.page .vb[for=v2],#v2:checked~.page .vb[for=v3],#v3:checked~.page .vb[for=v4],#v4:checked~.page .vb[for=v0]{display:block}
 .vr:focus-visible~.page .vb{outline:3px solid var(--ink);outline-offset:3px}
 .hid,.tr{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .win{position:relative}
@@ -382,11 +381,19 @@ html.js .sf{display:none!important}
 --sh1:0 1px 2px rgba(20,18,14,.05),0 10px 26px -10px rgba(20,18,14,.18);
 --sh2:0 2px 6px rgba(20,18,14,.06),0 24px 60px -18px rgba(20,18,14,.26);
 --disp:'Fraunces',Georgia,serif;--ui:'Instrument Sans',system-ui,sans-serif;
---tint:#f4ecd9;--paper2:#f7f3e9;--onink:#f3efe6;--oninkS:rgba(243,239,230,.84)}
-#v1:checked~.page{--lilac:#eceff5;--white:#fff;--ink:#0e1424;--pink:#4338ca;--lime:#a9b6ff;--tint:#e6e9f7;--paper2:#f3f5fb;--onink:#eef1f8;--oninkS:rgba(238,241,248,.84)}
-#v2:checked~.page{--lilac:#eef1f4;--white:#fff;--ink:#11161c;--pink:#0b57c7;--lime:#79c0ff;--tint:#e4eef8;--paper2:#f2f6fa;--onink:#eef2f6;--oninkS:rgba(238,242,246,.84)}
-#v3:checked~.page{--lilac:#ebf0ec;--white:#fff;--ink:#0f1a16;--pink:#0d6b4f;--lime:#6fd3a6;--tint:#e1efe8;--paper2:#f1f7f3;--onink:#edf3ef;--oninkS:rgba(237,243,239,.84)}
-#v4:checked~.page{--lilac:#f0f0f1;--white:#fff;--ink:#09090b;--pink:#3f3f46;--lime:#d4d4d8;--tint:#e8e8ea;--paper2:#f6f6f7;--onink:#f4f4f5;--oninkS:rgba(244,244,245,.84)}
+--tint:#f4ecd9;--paper2:#f7f3e9;--onink:#f3efe6;--oninkS:rgba(243,239,230,.84);
+--tex:repeating-linear-gradient(0deg,rgba(21,22,26,.032) 0 1px,transparent 1px 8px);
+--texd:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 8px)}
+/* Sovereign — royal navy & gold, pinstriped */
+#v1:checked~.page{--lilac:#f0ece2;--white:#fffdf7;--ink:#0a1c3f;--pink:#86621f;--lime:#e3c67e;--tint:#f2e9d4;--paper2:#f7f1e3;--onink:#eef1f7;--oninkS:rgba(238,241,247,.84);--tex:repeating-linear-gradient(90deg,rgba(10,28,63,.05) 0 1px,transparent 1px 13px);--texd:repeating-linear-gradient(90deg,rgba(227,198,126,.08) 0 1px,transparent 1px 13px)}
+/* Amethyst — royal purple & champagne, damask crosshatch */
+#v2:checked~.page{--lilac:#efebf3;--white:#fefcff;--ink:#190f2c;--pink:#5c2d91;--lime:#e0c389;--tint:#e9e2f2;--paper2:#f5f1f8;--onink:#f1ecf6;--oninkS:rgba(241,236,246,.84);--tex:repeating-linear-gradient(45deg,rgba(25,15,44,.045) 0 1px,transparent 1px 11px),repeating-linear-gradient(-45deg,rgba(25,15,44,.045) 0 1px,transparent 1px 11px);--texd:repeating-linear-gradient(45deg,rgba(224,195,137,.06) 0 1px,transparent 1px 11px),repeating-linear-gradient(-45deg,rgba(224,195,137,.06) 0 1px,transparent 1px 11px)}
+/* Verdant — forest & antique gold, diagonal weave */
+#v3:checked~.page{--lilac:#ecefe9;--white:#fdfefb;--ink:#0d1f18;--pink:#11523c;--lime:#cdb171;--tint:#e2eadf;--paper2:#f2f6ef;--onink:#edf2ea;--oninkS:rgba(237,242,234,.84);--tex:repeating-linear-gradient(135deg,rgba(13,31,24,.05) 0 1px,transparent 1px 10px);--texd:repeating-linear-gradient(135deg,rgba(205,177,113,.07) 0 1px,transparent 1px 10px)}
+/* Meridian — indigo, blueprint grid */
+#v4:checked~.page{--lilac:#ebeef6;--white:#fff;--ink:#0d1326;--pink:#3730a3;--lime:#a9b6ff;--tint:#e4e8f8;--paper2:#f2f4fc;--onink:#eef1f8;--oninkS:rgba(238,241,248,.84);--tex:repeating-linear-gradient(0deg,rgba(13,19,38,.05) 0 1px,transparent 1px 26px),repeating-linear-gradient(90deg,rgba(13,19,38,.05) 0 1px,transparent 1px 26px);--texd:repeating-linear-gradient(0deg,rgba(169,182,255,.06) 0 1px,transparent 1px 26px),repeating-linear-gradient(90deg,rgba(169,182,255,.06) 0 1px,transparent 1px 26px)}
+/* Obsidian — monochrome graphite, dot matrix */
+#v5:checked~.page{--lilac:#efeff0;--white:#fff;--ink:#09090b;--pink:#3f3f46;--lime:#d4d4d8;--tint:#e7e7e9;--paper2:#f6f6f7;--onink:#f4f4f5;--oninkS:rgba(244,244,245,.84);--tex:radial-gradient(rgba(9,9,11,.085) 1px,transparent 1.2px);--texsize:15px 15px;--texd:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px);--texdsize:15px 15px}
 body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 h1,h2,h3{font-family:var(--disp);font-weight:600;letter-spacing:-.025em;line-height:1.03}
 h2{font-size:clamp(36px,6.4vw,76px);margin-bottom:14px}
@@ -524,6 +531,41 @@ footer.foot{border-radius:16px 16px 0 0;padding:72px 6vw calc(env(safe-area-inse
 .vb:active,#vibe:active{transform:translateY(1px);box-shadow:var(--sh1)}
 .sp{color:var(--pink)}
 
+/* theme textures */
+.page{background-color:var(--lilac);background-image:var(--tex,none);background-size:var(--texsize,auto)}
+footer.foot,.proj,.path:nth-child(3){background-color:var(--ink);background-image:var(--texd,none);background-size:var(--texdsize,auto)}
+
+/* per-theme type treatment */
+#v1:checked~.page .hero h1{letter-spacing:-.03em}
+#v1:checked~.page .hero h1 em{font-style:normal;font-weight:600}
+#v1:checked~.page .sub{font-weight:600}
+#v1:checked~.page .cta{text-transform:uppercase;letter-spacing:.13em;font-size:13px}
+#v1:checked~.page .sticker small,#v1:checked~.page .info .ind{letter-spacing:.24em}
+
+#v2:checked~.page h2,#v2:checked~.page .path h3,#v2:checked~.page .kh{font-style:italic;font-weight:400}
+#v2:checked~.page .sub{font-style:italic}
+#v2:checked~.page .hero h1 em{font-style:italic;font-weight:400}
+
+#v3:checked~.page .hero h1 em,#v3:checked~.page .brand .num{font-style:normal;font-weight:600}
+#v3:checked~.page h2{font-weight:600;letter-spacing:-.02em}
+#v3:checked~.page .cta{text-transform:uppercase;letter-spacing:.11em;font-size:13px}
+
+#v4:checked~.page .hero h1{letter-spacing:-.055em}
+#v4:checked~.page .hero h1 em{font-style:normal;font-weight:600}
+#v4:checked~.page h2{letter-spacing:-.04em;font-weight:600}
+#v4:checked~.page .sub{font-weight:600}
+#v4:checked~.page .info .ind,#v4:checked~.page .tg span{letter-spacing:.18em}
+
+#v5:checked~.page .hero h1{font-weight:400;letter-spacing:-.03em}
+#v5:checked~.page h2,#v5:checked~.page .kh{font-weight:400;letter-spacing:-.005em}
+#v5:checked~.page .hero h1 em{font-style:italic;font-weight:400}
+#v5:checked~.page .cta{text-transform:uppercase;letter-spacing:.15em;font-size:12.5px}
+
+/* the switcher names the scheme it will apply */
+.vb{display:none;align-items:center;gap:8px}
+.vb::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 2px var(--lime)}
+#v0:checked~.page .vb[for=v1],#v1:checked~.page .vb[for=v2],#v2:checked~.page .vb[for=v3],#v3:checked~.page .vb[for=v4],#v4:checked~.page .vb[for=v5],#v5:checked~.page .vb[for=v0]{display:flex}
+
 @media(max-width:600px){
 section{padding:64px 6vw}
 h2{font-size:clamp(32px,8.5vw,44px)}
@@ -535,7 +577,7 @@ h2{font-size:clamp(32px,8.5vw,44px)}
 </style>
 </head>
 <body>
-<input class="vr" type="radio" name="vibe" id="v0" checked aria-label="Vibe 1"><input class="vr" type="radio" name="vibe" id="v1" aria-label="Vibe 2"><input class="vr" type="radio" name="vibe" id="v2" aria-label="Vibe 3"><input class="vr" type="radio" name="vibe" id="v3" aria-label="Vibe 4"><input class="vr" type="radio" name="vibe" id="v4" aria-label="Vibe 5">
+<input class="vr" type="radio" name="vibe" id="v0" checked aria-label="Editorial theme"><input class="vr" type="radio" name="vibe" id="v1" aria-label="Sovereign theme"><input class="vr" type="radio" name="vibe" id="v2" aria-label="Amethyst theme"><input class="vr" type="radio" name="vibe" id="v3" aria-label="Verdant theme"><input class="vr" type="radio" name="vibe" id="v4" aria-label="Meridian theme"><input class="vr" type="radio" name="vibe" id="v5" aria-label="Obsidian theme">
 <div class="page">
 
 <header class="hero" id="top">
@@ -775,7 +817,7 @@ h2{font-size:clamp(32px,8.5vw,44px)}
   <div class="fbar"><span>© 2026 Manjeet Singh · Designed and built by me</span><a href="#top">Back to top ↑</a></div>
 </footer>
 
-<div id="vibew"><label class="vb" for="v1">change my vibe</label><label class="vb" for="v2">change my vibe</label><label class="vb" for="v3">change my vibe</label><label class="vb" for="v4">change my vibe</label><label class="vb" for="v0">change my vibe</label></div>
+<div id="vibew"><label class="vb" for="v1">Next · Sovereign</label><label class="vb" for="v2">Next · Amethyst</label><label class="vb" for="v3">Next · Verdant</label><label class="vb" for="v4">Next · Meridian</label><label class="vb" for="v5">Next · Obsidian</label><label class="vb" for="v0">Next · Editorial</label></div>
 
 <div class="sf" id="st0"><div class="card"><a class="x" href="#highlights" aria-label="Close story">×</a><h3>Vera</h3><div class="role">Sustainable packaging · New Delhi</div><ul><li>Three product lines, each with its own page: rigid, flexible and returnable packaging.</li><li>Client, backer and certification logo walls (FDA, CIPET, RoHS) for instant trust.</li><li>A category grid showing where the material fits across eight FMCG categories.</li><li>A requirements form that captures company, category and quantity.</li></ul></div></div>
 <div class="sf" id="st1"><div class="card"><a class="x" href="#highlights" aria-label="Close story">×</a><h3>Sky Abroad</h3><div class="role">Recruitment platform · Europe</div><ul><li>A live hiring workspace showing verified talent and each candidate’s recognition progress.</li><li>The full path explained: screening, credential recognition, placement and relocation.</li><li>English and German versions, with light and dark modes.</li><li>A sister brand to EuropaWork: related, but clearly distinct.</li></ul></div></div>
